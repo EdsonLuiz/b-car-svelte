@@ -1,4 +1,5 @@
 <script>
+import Toast from '$lib/generic/Toast.svelte';
 import { deleteData } from '$lib/http/deleteData';
 
   import {getData} from '$lib/http/getData'
@@ -7,6 +8,7 @@ import { deleteData } from '$lib/http/deleteData';
   import {carsStore} from './car_store'
 
   const URL = 'http://localhost:3333/cars'
+  let errorMetadata = {message: ''}
 
   const tableHeaders = [
     'Imagem',
@@ -16,16 +18,27 @@ import { deleteData } from '$lib/http/deleteData';
     'Cor',
     'Ação'
   ]
+
+  const tableSpan = tableHeaders.length
+
   async function handleDelete(plate) {
     await deleteData(URL, {plate})
     carsStore.removeCar(plate)
   }
 
   onMount(async() => {
-    carsStore.set(await getData(URL))
+    try{
+      carsStore.set(await getData(URL))
+    } catch(err) {
+      errorMetadata.message = err.message
+    }
+    
   })
 </script>
 
+{#if errorMetadata.message }
+  <Toast message={errorMetadata.message} />
+{/if}
 
 <table class="table">
   <thead>
@@ -56,7 +69,7 @@ import { deleteData } from '$lib/http/deleteData';
         </td>
       </tr>
     {:else}
-      <td colspan="5" class="">Não existem carros</td>
+      <td colspan={tableSpan} class="">Não existem carros</td>
     {/each}
   </tbody>
 </table>

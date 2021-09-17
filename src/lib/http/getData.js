@@ -1,10 +1,9 @@
 export async function getData(URL) {
-  const response = await fetch(URL)
-
-  if(!response.ok) {
-    throw new Error('Ocorreu um erro')
+  try {
+    const response = await fetch(URL)
+    const data = await response.json()
+    return data
+  } catch (error) {
+    throw new Error('Erro ao buscar carros')
   }
-
-  const data = await response.json()
-  return data
 }
