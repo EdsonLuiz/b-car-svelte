@@ -5,10 +5,13 @@ Projeto baseado no [desafio do dia 04 pre-work b academy](https://github.com/bra
 
 ```bash
 # instalar pacotes para servidor e cliente
+# sim, só precisa executar uma vez
 npm install
 
 # abra dois terminais
+
 # inicie o servidor em um dos terminais
+# não precisa mudar de diretório
 npm run server
 
 # inicie o cliente em outro terminal
