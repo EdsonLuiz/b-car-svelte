@@ -3,12 +3,19 @@ import Toast from '$lib/generic/Toast.svelte';
 import { deleteData } from '$lib/http/deleteData';
 
   import {getData} from '$lib/http/getData'
-  import { onMount } from 'svelte';
+  import { onDestroy, onMount } from 'svelte';
   import {fly} from 'svelte/transition'
   import {carsStore} from './car_store'
 
   const URL = 'http://localhost:3333/cars'
-  let errorMetadata = {message: ''}
+  let setTimeoutReference;
+  let errorMessage = null
+
+  $:if(errorMessage !== null) {
+    setTimeoutReference = setTimeout(() => {
+      errorMessage = null
+    }, 4000);
+  }
 
   const tableHeaders = [
     'Imagem',
@@ -30,14 +37,16 @@ import { deleteData } from '$lib/http/deleteData';
     try{
       carsStore.set(await getData(URL))
     } catch(err) {
-      errorMetadata.message = err.message
+      errorMessage = err.message
     }
-    
   })
+
+  onDestroy(() => clearTimeout(setTimeoutReference))
+
 </script>
 
-{#if errorMetadata.message }
-  <Toast message={errorMetadata.message} />
+{#if errorMessage }
+  <Toast message={errorMessage} />
 {/if}
 
 <table class="table">
