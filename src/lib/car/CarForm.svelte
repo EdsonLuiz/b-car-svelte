@@ -1,7 +1,8 @@
 <script>
   import Input from '$lib/generic/Input.svelte'
-import Toast from '$lib/generic/Toast.svelte';
+  import Toast from '$lib/generic/Toast.svelte';
   import { postData } from '$lib/http/postData';
+  import { onDestroy } from 'svelte';
   import {carsStore} from './car_store'
 
   const URL = 'http://localhost:3333/cars'
@@ -25,7 +26,6 @@ import Toast from '$lib/generic/Toast.svelte';
   const resetData = {...carInputMetadata}
 
   async function handleSubmit(e) {
-    console.log('click');
     try {
       await postData(URL, carInputMetadata)
       carsStore.addCar(carInputMetadata)
@@ -35,6 +35,8 @@ import Toast from '$lib/generic/Toast.svelte';
       errorMessage = error.message   
     } 
   }
+
+  onDestroy(() => clearTimeout(setTimeoutReference))
 </script>
 
 {#if errorMessage }
