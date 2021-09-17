@@ -1,4 +1,7 @@
-# B-car
+# B-car  
+
+https://user-images.githubusercontent.com/5461553/133854043-a8a174ab-eba9-4599-ac27-0a28fc0795fa.mp4  
+
 Projeto baseado no [desafio do dia 04 pre-work b academy](https://github.com/brainnco/desafios-pre-work-b-academy/blob/main/dia4/README.md) utilizando svelte.
 
 ## Como executar?
