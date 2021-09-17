@@ -10,22 +10,15 @@
     brandModel: "",
     year: 0,
     plate: "",
-    color: ""
+    color: "#5f6266"
   }
+
+  const resetData = {...carInputMetadata}
 
   async function handleSubmit(e) {
     await postData(URL, carInputMetadata)
     carsStore.addCar(carInputMetadata)
-    /**
-     * this reset fires the error:
-     * The specified value "" does not conform to the required format.  
-     * The format is "#rrggbb" where rr, gg, bb are two-digit hexadecimal numbers.
-     * */ 
-
-    /**
-     * possible solution: clear all fields manually
-    */
-    e.target.reset()
+    carInputMetadata = {...resetData}
   }
 </script>
 
