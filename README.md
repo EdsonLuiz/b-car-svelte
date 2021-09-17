@@ -23,10 +23,16 @@ npm run dev
 - Actions
 - Transitions
 - Writable store
+- Auto-subscription
 - Logic blocks
 - Self-extending properties
 - Bind
+- Reactive assignments
+- Reactive declarations
+- Reactive statements
+- lifecycle methods
 
 ## Problemas
-- Falta tratamento de erros.
-- Cor padrão, da escolha de cores, não é aplicada corretamente e também não é capturada corretamente no envio do formulário.
+- <s>Falta tratamento de erros.</s>
+- <s>Cor padrão, da escolha de cores, não é aplicada corretamente e também não é capturada corretamente no envio do formulário.</s>
+- Adicionar validação no formulário.
