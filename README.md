@@ -26,3 +26,7 @@ npm run dev
 - Logic blocks
 - Self-extending properties
 - Bind
+
+## Problemas
+- Falta tratamento de erros.
+- Cor padrão, da escolha de cores, não é aplicada corretamente e também não é capturada corretamente no envio do formulário.
