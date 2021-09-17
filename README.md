@@ -1,5 +1,5 @@
 # B-car
-Projeto baseado no desafio do dia 04 pre-work b academy utilizando svelte 
+Projeto baseado no [desafio do dia 04 pre-work b academy](https://github.com/brainnco/desafios-pre-work-b-academy/blob/main/dia4/README.md) utilizando svelte.
 
 ## Como executar?
 
